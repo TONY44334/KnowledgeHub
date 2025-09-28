@@ -1,0 +1,143 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #root { height: 100%; width: 100%; font-family: "Courier", Tahoma, sans-serif; background: #f9f9f9; color: #222; }
+
+/* APP LAYOUT */
+.app-container { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* NAVBAR */
+.navbar {
+  display: flex; flex-wrap: wrap;
+  justify-content: space-between; align-items: center;
+  padding: 1rem 5%;
+  background: #004d40; color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.nav-brand { font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 600; }
+.nav-search {
+  display: flex; flex: 1 1 320px; max-width: 600px;
+}
+.nav-search input {
+  flex: 1; padding: 0.6rem 1rem;
+  border: none; border-radius: 0.5rem 0 0 0.5rem;
+  font-size: 1rem;
+}
+.nav-search button {
+  padding: 0.6rem 1rem; border: none;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: #ff9800; color: white; font-weight: bold;
+  cursor: pointer; transition: 0.2s;
+}
+.nav-search button:hover { background: #e68900; transform: scale(1.05); }
+
+/* MAIN CONTENT */
+.main-content {
+  display: flex; flex: 1;
+  padding: 1rem 1.55%;
+  gap: 2.5rem;
+  padding-top: 2.5%;
+}
+
+/* SIDEBAR */
+.sidebar {
+  flex: 0 0 220px;
+  background: #fff; border-radius: 0.8rem;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  align-self: flex-start;
+}
+.sidebar h3 { margin-bottom: 1rem; font-size: 1.1rem; color: #004d40; }
+.sidebar ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.sidebar li {
+  cursor: pointer; transition: color 0.2s;
+  font-size: 0.95rem;
+}
+.sidebar li:hover { color: #ff9800; }
+
+/* BOOKS SECTION */
+.books-section { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* BOOK GRID */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* BOOK CARD */
+.book-card {
+  background: white; border-radius: 0.8rem;
+  display: flex; flex-direction: column;
+  overflow: hidden; cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid #004d40;
+}
+.book-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+/* IMAGE */
+.book-img {
+  width: 100%;
+  aspect-ratio: 4/4; /* Keeps consistent height */
+  overflow: hidden;
+}
+.book-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.3s;
+}
+.book-card:hover .book-img img { transform: scale(1.05); }
+
+/* DETAILS INSIDE CARD */
+.book-details {
+  flex: 1; padding: 0.8rem;
+  display: flex; flex-direction: column;
+  gap: 0.3rem;
+}
+.book-title {
+  font-size: 1rem; font-weight: 600; color: #004d40;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.book-author, .book-publisher, .book-meta {
+  font-size: 0.85rem; color: #555;
+  display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.download-btn {
+  margin-top: auto; padding: 0.5rem;
+  border: none; border-radius: 0.5rem;
+  background: #ff9800; color: white; font-weight: bold;
+  cursor: pointer; transition: 0.2s;
+}
+.download-btn:hover { background: #e68900; transform: scale(1.05); }
+
+/* PAGINATION */
+.pagination {
+  display: flex; justify-content: center; align-items: center;
+  gap: 1rem; margin-top: auto;
+}
+.pagination button {
+  padding: 0.5rem 1rem; border: none; border-radius: 0.5rem;
+  background: #004d40; color: white; font-weight: bold;
+  cursor: pointer; transition: background 0.2s;
+}
+.pagination button:disabled { background: #aaa; cursor: not-allowed; }
+.pagination span { font-size: 0.9rem; }
+
+/* FOOTER */
+.footer {
+  text-align: center; padding: 1rem;
+  background: #004d40; color: white;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media(max-width: 1024px) {
+  .main-content { flex-direction: column; }
+  .sidebar { flex: 1; width: 100%; }
+}
+@media(max-width: 768px) {
+  .nav-search { flex-direction: column; gap: 0.5rem; }
+  .nav-search input, .nav-search button { width: 100%; border-radius: 0.5rem; }
+}
+@media(max-width: 480px) {
+  .book-grid { grid-template-columns: 1fr; }
+}
